@@ -2,7 +2,7 @@ from app import app
 from flask import render_template, redirect, url_for, request
 from flask import Flask
 
-@app.route('/')
+@app.route('/index')
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     error = None
