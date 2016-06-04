@@ -31,3 +31,8 @@
     background-repeat: no-repeat;
     max-width: 100%;
 }
+
+.container {
+    text-align: left;
+    align-content: left;
+}

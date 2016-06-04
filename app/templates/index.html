@@ -43,8 +43,25 @@
             </div>
             <div class="large-2 columns">
                 <br>
+                <div class="container">
+
+
+                    <h3>Please login</h3>
+                    <br>
+                    <form action="" method="post">
+                        <input type="text" placeholder="Username" name="username" value="{{ request.form.username }}">
+                        <input type="password" placeholder="Password" name="password" value="{{ request.form.password }}">
+                        <input class="btn btn-default" type="submit" value="Login">
+                    </form>
+                    {% if error %}
+                    <p class="error"><strong>Error:</strong>{{ error }}</p>
+                    {% endif%}
+
+                </div>
+
             </div>
         </div>
+    </div>
     </div>
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
