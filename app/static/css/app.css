@@ -1,3 +1,7 @@
+body {
+    padding: 0px;
+}
+
 .hea {
     background-image: url(../img//kiptulwa-1-620x330.jpg);
     background-size: cover;
@@ -43,4 +47,9 @@
     background-color: #39751A;
     font-size: 20px;
     width: 100px;
+}
+
+.color {
+    background-color: #39751A;
+    height: 60px;
 }

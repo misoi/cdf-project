@@ -29,18 +29,27 @@
     <div class="row background">
 
         <div class="large-12 columns ">
-            <div class="large-4 columns">
+            <div class="large-4 columns color">
                 <br>
             </div>
-            <div class="menu">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li>About</li>
-                    <li>Contact</li>
-                    <li>Projects</li>
-                </ul>
-            </div>
+            <div class="large-6 columns">
+                <div class="menu">
+                    <ul>
+                        <li><a href="/index">Home</a></li>
+                        <li>About</li>
+                        <li>Contact</li>
+                        <li>Projects</li>
 
+                    </ul>
+
+                </div>
+            </div>
+            <div class="large-2 columns color">
+                <div class="container">
+                    <p><a href="/logout">Logout</a></p>
+
+                </div>
+            </div>
             <br>
             <div class="container">
                 <div class="large-12 columns">
@@ -50,7 +59,7 @@
                     </div>
 
                     <div class="large-6 columns">
-                        <h3>Please login</h3>
+                        <h3>Please login</h3> {% for message in get_flashed_messages() %} {{ message }} {% endfor %}
                         <br> {% if error %}
                         <p class="error"><strong>Error:</strong>{{ error }}</p>
                         {% endif %}
@@ -64,7 +73,7 @@
                         <br>
                     </div>
                 </div>
-                <h5>Don't have an account? please sign up</h5>
+                <h5>Don't have an account? please <a href="signup">sign up</a></h5>
             </div>
         </div>
     </div>
