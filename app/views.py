@@ -27,3 +27,7 @@ def logout():
 def signup():
     return render_template("signup.html")
 
+@app.route('/index')
+def db():
+    flash("Sucessfully registered")
+    return render_template("index.html")

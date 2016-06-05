@@ -25,14 +25,13 @@
     </div>
     <br>
     <hr>
+    <div class="row">
 
-    <div class="row background">
-
-        <div class="large-12 columns ">
-            <div class="large-4 columns color">
+        <div class="small-12 large-12 columns color">
+            <div class="small-12 large-4 columns ">
                 <br>
             </div>
-            <div class="large-6 columns">
+            <div class="small-12 large-6 columns">
                 <div class="menu">
                     <ul>
                         <li><a href="/index">Home</a></li>
@@ -44,39 +43,43 @@
 
                 </div>
             </div>
-            <div class="large-2 columns color">
-                <div class="container">
-                    <p><a href="/logout">Logout</a></p>
+            <div class="small-12 large-2 columns">
 
-                </div>
-            </div>
-            <br>
-            <div class="container">
-                <div class="large-12 columns">
+                <p><a href="/logout">Logout</a></p>
 
-                    <div class="large-3 columns">
-                        <br>
-                    </div>
-
-                    <div class="large-6 columns">
-                        <h3>Please login</h3> {% for message in get_flashed_messages() %} {{ message }} {% endfor %}
-                        <br> {% if error %}
-                        <p class="error"><strong>Error:</strong>{{ error }}</p>
-                        {% endif %}
-                        <form action="" method="post">
-                            <input type="text" placeholder="Username" name="username" value="{{ request.form.username }}" required>
-                            <input type="password" placeholder="Password" name="password" value="{{ request.form.password }}" required>
-                            <input class="btn btn-default button" type="submit" value="Login">
-                        </form>
-                    </div>
-                    <div class="large-3 columns">
-                        <br>
-                    </div>
-                </div>
-                <h5>Don't have an account? please <a href="signup">sign up</a></h5>
             </div>
         </div>
+        <br>
     </div>
+
+    <div class="row background">
+
+        <div class="container">
+            <div class="large-12 columns">
+
+                <div class="large-3 columns">
+                    <br>
+                </div>
+
+                <div class="large-6 columns">
+                    <h3>Please login</h3> {% for message in get_flashed_messages() %} {{ message }} {% endfor %}
+                    <br> {% if error %}
+                    <p class="error"><strong>Error:</strong>{{ error }}</p>
+                    {% endif %}
+                    <form action="" method="post">
+                        <input type="text" placeholder="Username" name="username" value="{{ request.form.username }}" required>
+                        <input type="password" placeholder="Password" name="password" value="{{ request.form.password }}" required>
+                        <input class="btn btn-default button" type="submit" value="Login">
+                    </form>
+                </div>
+                <div class="large-3 columns">
+                    <br>
+                </div>
+            </div>
+            <h5>Don't have an account? please <a href="signup">sign up</a></h5>
+        </div>
+    </div>
+
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
     <script src="js/vendor/foundation.js"></script>

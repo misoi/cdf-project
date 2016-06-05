@@ -16,7 +16,7 @@ body {
     height: 60px;
     line-height: 40px;
     letter-spacing: 1px;
-    max-width: 1100;
+    max-width: 100%;
 }
 
 .menu-padding {
