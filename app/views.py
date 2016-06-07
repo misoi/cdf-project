@@ -13,7 +13,7 @@ def index():
         else:
             session['logged_in'] = True
             flash("You have successfully logged in!")
-            return redirect(url_for('logout'))
+            return redirect(url_for('signup'))
 #    return "Hello, World!"
     return render_template("index.html", error=error)
 

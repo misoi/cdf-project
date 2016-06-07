@@ -1,56 +1,66 @@
-body {
-    padding: 0px;
-}
+    body {
+        padding: 0px;
+    }
 
-.hea {
-    background-image: url(../img//kiptulwa-1-620x330.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    max-width: 100%;
-    opacity: 0.6;
-}
+    .hea {
+        background-image: url(../img//kiptulwa-1-620x330.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        max-width: 100%;
+        opacity: 1;
+    }
 
-.menu {
-    background-color: #39751A;
-    color: #fff;
-    height: 60px;
-    line-height: 40px;
-    letter-spacing: 1px;
-    max-width: 100%;
-}
+    .menu {
+        background-color: #39751A;
+        color: #fff;
+        height: 60px;
+        line-height: 40px;
+        letter-spacing: 1px;
+        max-width: 100%;
+    }
 
-.menu-padding {
-    padding-top: 10px;
-}
+    .menu-padding {
+        padding-top: 10px;
+    }
 
-.menu li {
-    display: inline-block;
-    text-align: top;
-    padding: 20px;
-    font-size: 30px;
-    margin-bottom: 5px;
-}
+    .menu li {
+        display: inline-block;
+        text-align: top;
+        padding: 20px;
+        font-size: 30px;
+        margin-bottom: 5px;
+    }
 
-.background {
-    background-image: url(../img/Longisa-Hospital.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    max-width: 100%;
-    opacity: 0.7;
-}
+    .background {
+        background-image: url(../img/Longisa-Hospital.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        max-width: 100%;
+    }
 
-.container {
-    text-align: center;
-    align-content: center;
-}
+    .container {
+        text-align: center;
+        align-content: center;
+    }
 
-.button {
-    background-color: #39751A;
-    font-size: 20px;
-    width: 100px;
-}
+    .button {
+        background-color: #39751A;
+        font-size: 20px;
+        width: 100px;
+    }
 
-.color {
-    background-color: #39751A;
-    height: 60px;
-}
+    .color {
+        background-color: #39751A;
+        height: 60px;
+        max-width: 1300px;
+    }
+
+    .font {
+        font-size: 30px;
+    }
+
+    .big {
+        color: black;
+        font-family: fantasy;
+        font-size: 25px;
+    }

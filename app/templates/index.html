@@ -13,45 +13,48 @@
 </head>
 
 <body>
-    <div class="large-12 columns hea">
+    <div class="large-12 columns hea overlay">
+        <div class="large-12 columns">
 
-        <div class="large-4 columns">
-            <img src="../static/img/ke-bomet.gif"></div>
+            <div class="large-4 columns">
+                <img src="../static/img/ke-bomet.gif"></div>
 
-        <div class="large-7 columns">
+            <div class="large-5 columns">
 
+            </div>
+            <div class="large-4 columns"> <img src="../static/img/Isaac-Kiprono-Ruto.jpg" height="50%" width="50%">GOVERNOR ISAAC RUTO</div>
         </div>
-        <div class="large-2 columns"> <img src="../static/img/Isaac-Kiprono-Ruto.jpg" height="100%" width="100%">GOVERNOR ISAAC RUTO</div>
     </div>
-    <br>
     <hr>
-    <div class="row">
+    <div class="row color">
 
-        <div class="small-12 large-12 columns color">
-            <div class="small-12 large-4 columns ">
-                <br>
-            </div>
-            <div class="small-12 large-6 columns">
-                <div class="menu">
-                    <ul>
-                        <li><a href="/index">Home</a></li>
-                        <li>About</li>
-                        <li>Contact</li>
-                        <li>Projects</li>
 
-                    </ul>
+        <div class="small-12 large-3 columns ">
+            <br>
+        </div>
+        <div class="small-12 large-7 columns">
+            <div class="menu">
+                <ul>
+                    <li><a href="/index">Home</a></li>
+                    <li>About</li>
+                    <li>Contact</li>
+                    <li>Projects</li>
+                    <li>Apply</li>
 
-                </div>
-            </div>
-            <div class="small-12 large-2 columns">
-
-                <p><a href="/logout">Logout</a></p>
+                </ul>
 
             </div>
         </div>
-        <br>
-    </div>
+        <div class="small-12 large-2 columns">
 
+            <p>
+                <a href="/logout">
+                    <p class="font">Logout</p>
+                </a>
+            </p>
+
+        </div>
+    </div>
     <div class="row background">
 
         <div class="container">
@@ -66,6 +69,9 @@
                     <br> {% if error %}
                     <p class="error"><strong>Error:</strong>{{ error }}</p>
                     {% endif %}
+                    <br>
+                    <br>
+                    <br>
                     <form action="" method="post">
                         <input type="text" placeholder="Username" name="username" value="{{ request.form.username }}" required>
                         <input type="password" placeholder="Password" name="password" value="{{ request.form.password }}" required>
@@ -73,7 +79,9 @@
                     </form>
                 </div>
                 <div class="large-3 columns">
+                    <img src="../static/img/Sheila-Mwanyigha.jpg">
                     <br>
+                    <p class="big">Education is the most powerful weapon we can use to change the world</p>
                 </div>
             </div>
             <h5>Don't have an account? please <a href="signup">sign up</a></h5>
