@@ -1,7 +1,20 @@
 from app import app
-from flask import render_template, redirect, url_for, request, flash, session
+from flask import render_template, redirect, url_for, request, flash, session, g
 from flask import Flask
-from functools import wraps
+#from functools import wraps
+#from flask_wtf import Form
+#from forms import RegistrationForm
+from flask.ext.sqlalchemy import SQLAlchemy
+#import sqlite3
+
+#def login_required(f):
+#    @wraps(f)
+#    def wrap(*aegs,**kwargs):
+#        if 'logged_in' in session:
+#            return f(*args, **kwargs)
+#        else:
+#            flash('You need to login first')
+#    return wrap
 
 @app.route('/index')
 @app.route('/index', methods=['GET', 'POST'])
@@ -23,11 +36,26 @@ def logout():
     flash("you have just logged out")
     return redirect(url_for('index'))
 
-@app.route('/signup')
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    return render_template("signup.html")
+    form = RegistrationForm()
+    if request.method == "POST" and form.validate():
+        username = form.username.data
+        email = form.email.data
+        password = form.password.data
+        confirm = form.password2.data
+    return render_template("signup.html", form=form)
 
 @app.route('/index')
 def db():
     flash("Sucessfully registered")
     return render_template("index.html")
+
+@app.route('/about')
+def about():
+    return render_template("about.html")
+
+#@app.route('/')
+#@login_required
+#def apply():
+#    return render_template("signup")

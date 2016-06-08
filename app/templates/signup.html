@@ -40,7 +40,16 @@
                             <div class="large-6 columns">
                                 {% for message in get_flashed_messages() %} {{ message }} {% endfor %}
                                 <br>
+                                <h3>SignUp</h3>
+                                <br> {% from "formhelper.html" import render_field %}
                                 <form action="" method="post">
+                                    {{ render_field(form.username) }}
+                                    <br>{{ render_field(form.email) }}
+                                    <br>{{ render_field(form.password)}}
+                                    <br> {{ render_field(form.password2) }}
+
+
+                                    <!--
                                     <input type="text" placeholder="Full Name" name="name" required>
                                     <br>
                                     <input type="email" placeholder="Email" name="email" required>
@@ -51,9 +60,15 @@
                                     <br>
                                     <input type="text" placeholder="Village" name="village" value="" required>
                                     <br>
+                                    <input type="password" placeholder="password" name="password" value="" required>
+                                    <br>
+                                    <input type="password" placeholder="confirm password" name="confirm" value="" required>
+                                    <br>
+-->
                                     <a href="/index">
                                         <input class="btn btn-default button" type="submit" value="Signup">
                                     </a>
+
                                 </form>
                             </div>
                             <div class="large-5 columns">
