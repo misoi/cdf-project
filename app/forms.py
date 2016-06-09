@@ -22,7 +22,8 @@ class RegistrationForm(Form):
                 r'^[a-zA-Z0-9_]+$',
                 message=("Username should be letters,numbers and underscore only.")
                 ),
-            name_exists
+            name_exists,
+
         ])
     email = StringField(
         'Email',
