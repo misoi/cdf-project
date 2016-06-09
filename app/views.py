@@ -1,9 +1,9 @@
 from app import app
 from flask import render_template, redirect, url_for, request, flash, session, g
 from flask import Flask
-#from functools import wraps
-#from flask_wtf import Form
-#from forms import RegistrationForm
+from functools import wraps
+from flask_wtf import Form
+from forms import RegistrationForm
 from flask.ext.sqlalchemy import SQLAlchemy
 #import sqlite3
 

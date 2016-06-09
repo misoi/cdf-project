@@ -12,11 +12,12 @@ class BlogPost(db.Model):
 #    confirm= db.Column(db.String, nullable=False)
 
 def __init__(self, title, description):
-
     self.title = title
     self.description = description
 #    self.pasword = password
-#    self.confirm = confirm
+##    self.confirm = confirm
 
 def __repr__(self):
-    return '<title {}>'.format(self.title)
+    return '<title {}'.format(self.title)
+
+

@@ -41,12 +41,12 @@
                                 {% for message in get_flashed_messages() %} {{ message }} {% endfor %}
                                 <br>
                                 <h3>SignUp</h3>
-                                <br> {% from "formhelper.html" import render_field %}
+                                <!--                                <br> {% from "formhelper.html" import render_field %}-->
                                 <form action="" method="post">
-                                    {{ render_field(form.username) }}
-                                    <br>{{ render_field(form.email) }}
-                                    <br>{{ render_field(form.password)}}
-                                    <br> {{ render_field(form.password2) }}
+                                    {{ form.username }}
+                                    <br>{{ form.email }}
+                                    <br>{{ form.password }}
+                                    <br> {{ form.password2 }}
 
 
                                     <!--
