@@ -1,0 +1,10 @@
+from app import db
+from models import BlogPost
+
+db.create_all()
+
+db.session.add(BlogPost("Good","am good"))
+db.session.add(BlogPost("you","are wrong"))
+
+
+db.session.commit()
