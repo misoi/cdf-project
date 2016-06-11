@@ -48,8 +48,8 @@ def signup():
     return render_template("signup.html", form=form)
 
 
-def connect_db():
-   return sqlite3.connect('posts.db')
+# def connect_db():
+#    return sqlite3.connect('posts.db')
 
 @app.route('/about')
 def about():
