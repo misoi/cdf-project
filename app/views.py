@@ -4,7 +4,7 @@ from functools import wraps
 from flask_wtf import Form
 from forms import RegistrationForm
 ##from flask.ext.sqlalchemy import SQLAlchemy
-##import sqlite3
+import sqlite3
 #
 #
 #
