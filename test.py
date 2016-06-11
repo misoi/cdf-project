@@ -8,6 +8,13 @@ class FlaskTestCase(unittest.TestCase):
 		response = tester.get('/index', content_type='html/text')
 		self.assertEqual(response.status_code, 200)
 
+		
+       # ensure page loads correctly
+	def test_home_page(self):
+		tester = app.test_client(self)
+		response = tester.get('/index', content_type='html/text')
+		self.assertTrue(b'please login' in response.data)
+
 if __name__ == '__main__':
-	unittest.main()
+	unittest.main() 
 		

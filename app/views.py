@@ -3,8 +3,8 @@ from flask import render_template, redirect, url_for, request, flash, session, g
 from functools import wraps
 from flask_wtf import Form
 from forms import RegistrationForm
-##from flask.ext.sqlalchemy import SQLAlchemy
-import sqlite3
+from flask.ext.sqlalchemy import SQLAlchemy
+#import sqlite3
 #
 #
 #
@@ -44,13 +44,13 @@ def signup():
         email = form.email.data
         password = form.password.data
         confirm = form.password2.data
+        posts = db.session.query(BlogPost).all()
     return render_template("signup.html", form=form)
 
-##@app.route('/index')
-##def db():
-##    flash("Sucessfully registered")
-##    return render_template("index.html")
-#
+
+def connect_db():
+   return sqlite3.connect('posts.db')
+
 @app.route('/about')
 def about():
     return render_template("about.html")
