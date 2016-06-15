@@ -11,9 +11,7 @@ def email_exists(form, field):
 
 
 class RegistrationForm(Form):
-    username = TextField(
-        'username',
-        validators=[
+    username = TextField('username', validators=[
             DataRequired(),
             Regexp(
                 r'^[a-zA-Z0-9_]+$',

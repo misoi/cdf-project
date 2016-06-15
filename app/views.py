@@ -12,15 +12,15 @@ from flask.ext.sqlalchemy import SQLAlchemy
 app.secret_key='my previous'
 #
 #
-def login_required(f):
-   @wraps(f)
-   def wrap(*args,**kwargs):
-       if 'logged_in' in session:
-           return f(*args, **kwargs)
-       else:
-           flash('You need to login first')
-           return render_template (url_for('index'))
-   return wrap
+# def login_required(f):
+#    @wraps(f)
+#    def wrap(*args,**kwargs):
+#        if 'logged_in' in session:
+#            return f(*args, **kwargs)
+#        else:
+#            flash('You need to login first')
+#            return render_template (url_for('index'))
+#    return wrap
 #
 @app.route('/')
 @app.route('/index', methods=['GET','POST'])
@@ -32,11 +32,11 @@ def index():
         else:
             session['logged_in'] = True
             flash("You have successfully logged in!")
-            return redirect(url_for('signup'))
+            return redirect(url_for('apply'))
     return render_template('index.html', error=error)
 
 @app.route('/logout')
-@login_required
+
 def logout():
     session.pop('logged_in', None)
     flash("you have just logged out")
@@ -71,9 +71,6 @@ def about():
     return render_template("about.html")
 
 @app.route('/apply', methods=['GET', 'POST'])
-@login_required
-def apply():
-    return render_template("apply.html")
 
-#
-#
+def apply():
+  return render_template("apply.html")

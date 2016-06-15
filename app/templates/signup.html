@@ -13,25 +13,16 @@
 </head>
 
 <body>
-    <div class="large-12 columns">
-
-        <br>
+    <div class="large-12 columns ">
         <hr>
 
-        <div class="row ">
+        <div class="row apply ">
 
             <div class="large-12 columns ">
 
-
-                <div class="menu">
-                    <ul>
-                        <li><a href="/index">Home</a></li>
-                        <li>About</li>
-                        <li>Contact</li>
-                        <li>Projects</li>
-                    </ul></div>
+ 
                     <div class="container">
-                        <div class="large-12 columns">
+                        <div class="large-12 columns overlay">
 
                             <div class="large-2 columns">
                                 <br>
@@ -43,20 +34,11 @@
                                 {% for message in get_flashed_messages() %} {{ message }} {% endfor %}
                                 <br>
                                 <form action="/signup" method="post">
-                                     <label>Full name</label>{{ form.username }}
-                                    <br><label>Valid Email</label>{{ form.email }}
-                                    <br><label>Password</label>{{ form.password }}
-                                    <br><label>Confirm Password</label>{{ form.password2 }}
+                                     <label class="color">Full name</label>{{ form.username }}
+                                    <br><label class="color">Valid Email</label>{{ form.email }}
+                                    <br><label class="color">Password</label>{{ form.password }}
+                                    <br><label class="color">Confirm Password</label>{{ form.password2 }}
 
-                                    <!-- <input type="text" placeholder="Full Name" name="name" required>
-                                    <br>
-                                    <input type="email" placeholder="Email" name="email" required>
-                                    <br>
-                                    <input type="password" placeholder="password" name="password" value="" required>
-                                    <br>
-                                    <input type="password" placeholder="confirm password" name="confirm" value="" required>
-                                    <br>
- -->
                                     <a href="/index">
                                         <input class="btn btn-default button" type="submit" value="Signup">
                                     </a>

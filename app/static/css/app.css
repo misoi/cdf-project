@@ -3,15 +3,16 @@
     }
 
     .hea {
-        background-image: url(../img//kiptulwa-1-620x330.jpg);
+        background-image: url(../img/back.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         max-width: 100%;
         opacity: 1;
+
     }
 
     .menu {
-        background-color: #39751A;
+        
         color: #fff;
         height: 60px;
         line-height: 40px;
@@ -30,14 +31,6 @@
         font-size: 30px;
         margin-bottom: 5px;
     }
-
-    .background {
-        background-image: url(../img/Longisa-Hospital.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        max-width: 100%;
-    }
-
     .container {
         text-align: center;
         align-content: center;
@@ -47,12 +40,6 @@
         background-color: #39751A;
         font-size: 20px;
         width: 100px;
-    }
-
-    .color {
-        background-color: #39751A;
-        height: 60px;
-        max-width: 1300px;
     }
 
     .font {
@@ -66,8 +53,23 @@
     }
     .overlay {
     background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.5);
+    background-color: rgba(0,0,0, 0.6);
     overflow-x: hidden;
+    color: white;
     
+}
+.sectionone{
+    background-color: green;
+}
+.apply{
+    background-image: url(../img/register.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        max-width: 100%;
+        opacity: 1;
+}
+.color{
+    color: white;
+    font-size:18px;
 }
 
