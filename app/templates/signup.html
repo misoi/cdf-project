@@ -29,49 +29,42 @@
                         <li>About</li>
                         <li>Contact</li>
                         <li>Projects</li>
-                    </ul>
+                    </ul></div>
                     <div class="container">
                         <div class="large-12 columns">
 
-                            <div class="large-1 columns">
+                            <div class="large-2 columns">
                                 <br>
                             </div>
 
                             <div class="large-6 columns">
+                            <fieldset><legend>
+                                   <h2>Please signup here</h2></legend>
                                 {% for message in get_flashed_messages() %} {{ message }} {% endfor %}
                                 <br>
-                                <h3>SignUp</h3>
+                                <form action="/signup" method="post">
+                                     <label>Full name</label>{{ form.username }}
+                                    <br><label>Valid Email</label>{{ form.email }}
+                                    <br><label>Password</label>{{ form.password }}
+                                    <br><label>Confirm Password</label>{{ form.password2 }}
 
-                                <form action="" method="post">
-                                    {{ form.username }}
-                                    <br>{{ form.email }}
-                                    <br>{{ form.password }}
-                                    <br> {{ form.password2 }}
-
-
-                                    <!--
-                                    <input type="text" placeholder="Full Name" name="name" required>
+                                    <!-- <input type="text" placeholder="Full Name" name="name" required>
                                     <br>
                                     <input type="email" placeholder="Email" name="email" required>
-                                    <br>
-                                    <input type="text" placeholder="Constituency" name="constituency" value="" required>
-                                    <br>
-                                    <input type="text" placeholder="Location" name="location" value="" required>
-                                    <br>
-                                    <input type="text" placeholder="Village" name="village" value="" required>
                                     <br>
                                     <input type="password" placeholder="password" name="password" value="" required>
                                     <br>
                                     <input type="password" placeholder="confirm password" name="confirm" value="" required>
                                     <br>
--->
+ -->
                                     <a href="/index">
                                         <input class="btn btn-default button" type="submit" value="Signup">
                                     </a>
 
                                 </form>
+                                </fieldset>
                             </div>
-                            <div class="large-5 columns">
+                            <div class="large-4 columns">
                                 <br>
                             </div>
                         </div>

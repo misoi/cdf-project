@@ -1,42 +1,22 @@
 from app import db
 
-class BlogPost(db.Model):
 
-    __tablename_ = "posts"
+class signup(db.Model):
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    title = db.Column(db.String, nullable=False)
-    description = db.Column(db.String, nullable=False)
+	__tablename_= 'user'
 
-    def __init__(self, title, description):
-        self.title = title
-        self.description = description
-
-    def __repr__(self):
-        return '<title {}'.format(self.title)
+	id =db.Column(db.Integer, primary_key=True)
+	username = db.Column(db.String,nullable=False)
+	email = db.Column(db.String,nullable=False)
+	password = db.Column(db.String,nullable=False)
+	confirm= db.Column(db.String,nullable=False)
 
 
-# users teble
-
-class User(db.Model):
-	__tablename_ = "users"
-
-	id = db.Column(db.Integer, primary_key=True)
-	name = db.Column(db.String, nullable=False)
-	email = db.Column(db.String, nullable=False)
-	password = db.Column(db.String, nullable=False)
-	confirm= db.Column(db.String, nullable=False)
-
-	def __init__(self, name, email, password, confirm):
-		self.name = name
+	def __init__(self, username, email, password, confirm):
+		self.username= username
 		self.email = email
-		self.password = password
-		self.confirm = confirm
+		self.password= bcrypt.generate_password_hash(password)
+		self.confirm= confirm
 
 	def __repr__(self):
-		return '<name {}'.format(self.name)
-
-	
-
-
-
+		return '<username{}'.format(self.username)

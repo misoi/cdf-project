@@ -1,35 +1,30 @@
 from flask_wtf import Form
-from wtforms import StringField, PasswordField
+from models import signup
+from wtforms import TextField, PasswordField
 from wtforms.validators import DataRequired, Regexp, ValidationError, Email, Length, EqualTo
 
 #from models import User
 
-def name_exists(form, field):
-    if User.select().where(User.username == field.data).exists():
-        raise validationError("username already exist.")
-
 def email_exists(form, field):
-    if User.select().where(User.email == field.data).exists():
+    if user.select().where(user.email == field.data).exists():
         raise validationError("Email already exist.")
 
 
 class RegistrationForm(Form):
-    username= StringField(
-        'Username',
+    username = TextField(
+        'username',
         validators=[
             DataRequired(),
             Regexp(
                 r'^[a-zA-Z0-9_]+$',
-                message=("Username should be letters,numbers and underscore only.")
+                message=("Name should be letters,numbers and underscore only.")
                 ),
-            name_exists,
-
         ])
-    email = StringField(
-        'Email',
+    email = TextField(
+        'email',
         validators=[
             DataRequired(),
-            Email(),
+            Email(message=None),
             email_exists
             ])
     password = PasswordField(
