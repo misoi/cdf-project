@@ -33,7 +33,7 @@
                                    <h2>Please signup here</h2></legend>
                                 {% for message in get_flashed_messages() %} {{ message }} {% endfor %}
                                 <br>
-                                <form action="/signup" method="post">
+                                <form action="" method="post">
                                      <label class="color">Full name</label>{{ form.username }}
                                     <br><label class="color">Valid Email</label>{{ form.email }}
                                     <br><label class="color">Password</label>{{ form.password }}

@@ -12,15 +12,15 @@ from flask.ext.sqlalchemy import SQLAlchemy
 app.secret_key='my previous'
 #
 #
-# def login_required(f):
-#    @wraps(f)
-#    def wrap(*args,**kwargs):
-#        if 'logged_in' in session:
-#            return f(*args, **kwargs)
-#        else:
-#            flash('You need to login first')
-#            return render_template (url_for('index'))
-#    return wrap
+def login_required(f):
+   @wraps(f)
+   def wrap(*args,**kwargs):
+       if 'logged_in' in session:
+           return f(*args, **kwargs)
+       else:
+          flash('You need to login first')
+          return render_template ("index.html")
+   return wrap
 #
 @app.route('/')
 @app.route('/index', methods=['GET','POST'])
@@ -46,19 +46,15 @@ def logout():
 def signup():
     form = RegistrationForm()
     if request.method == "POST":
-
-        if form.username == "" or form.email== "" or form.password == "" or form.password2 == "" :
-            flash("Fill all the fields required")
-        else:
-            user = signup(
-            username = form.username.data,
-            email = form.email.data,
-            password = form.password.data,
-            confirm = form.password2.data
-            )
-            db.session.add(user)
-            db.session.commit()
-            login_user(user)
+      user = signup(
+      username = form.username.data,
+      email = form.email.data,
+      password = form.password.data,
+      confirm = form.password2.data
+      )
+      db.session.add(user)
+      db.session.commit()
+      login_user(user)
         
     return render_template("signup.html", form=form)
 
@@ -71,6 +67,6 @@ def about():
     return render_template("about.html")
 
 @app.route('/apply', methods=['GET', 'POST'])
-
+@login_required
 def apply():
   return render_template("apply.html")

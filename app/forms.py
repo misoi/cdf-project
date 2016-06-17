@@ -1,7 +1,9 @@
 from flask_wtf import Form
 from models import signup
-from wtforms import TextField, PasswordField
+from wtforms import TextField, PasswordField, validators
 from wtforms.validators import DataRequired, Regexp, ValidationError, Email, Length, EqualTo
+
+
 
 #from models import User
 
@@ -11,15 +13,13 @@ def email_exists(form, field):
 
 
 class RegistrationForm(Form):
-    username = TextField('username', validators=[
-            DataRequired(),
-            Regexp(
+    username = TextField('Username', [validators.Required("Enter your name"),Regexp(
                 r'^[a-zA-Z0-9_]+$',
                 message=("Name should be letters,numbers and underscore only.")
                 ),
         ])
     email = TextField(
-        'email',
+        'Email',
         validators=[
             DataRequired(),
             Email(message=None),
