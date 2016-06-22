@@ -21,7 +21,7 @@
             <div class="large-12 columns ">
 
  
-                    <div class="container">
+                    <div class="container apply">
                         <div class="large-12 columns overlay">
 
                             <div class="large-2 columns">
@@ -33,12 +33,14 @@
                                    <h2>Please signup here</h2></legend>
                                 {% for message in get_flashed_messages() %} {{ message }} {% endfor %}
                                 <br>
-                                <form action="" method="post">
-                                     <label class="color">Full name</label>{{ form.username }}
-                                    <br><label class="color">Valid Email</label>{{ form.email }}
-                                    <br><label class="color">Password</label>{{ form.password }}
-                                    <br><label class="color">Confirm Password</label>{{ form.password2 }}
-
+                                <form action="/signup" method="POST">
+                                     <label >Full name</label><input type="text" placeholder="Full name" name="name" value="{{ request.form.username }}" required>
+                       
+                                    <br><label>Valid Email</label> <input type="email" placeholder="Valid email" name="email"  required>
+                       
+                                    <br><label >Password</label> <input type="password" placeholder="Password" name="password" required>
+                       
+                                    <br><label>Confirm Password</label><input type="password" placeholder="confirm password" name="confirm"  required>
                                     <a href="/index">
                                         <input class="btn btn-default button" type="submit" value="Signup">
                                     </a>

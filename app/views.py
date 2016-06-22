@@ -2,16 +2,11 @@ from app import app, db
 from flask import render_template, redirect, url_for, request, flash, session, g, Flask
 from functools import wraps
 from flask_wtf import Form
-from forms import RegistrationForm
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 #import sqlite3
 
 
-
-app.secret_key='my previous'
-#
-#
 def login_required(f):
    @wraps(f)
    def wrap(*args,**kwargs):
@@ -44,23 +39,20 @@ def logout():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    form = RegistrationForm()
+    
     if request.method == "POST":
-      user = signup(
-      username = form.username.data,
-      email = form.email.data,
-      password = form.password.data,
-      confirm = form.password2.data
+      user = signup(request.form['username'],
+      request.form['email'], 
+      request.form['password'],
+      request.form['confirm']    
       )
       db.session.add(user)
       db.session.commit()
-      login_user(user)
+      flash("You;ve successd")
         
-    return render_template("signup.html", form=form)
+    return render_template("signup.html")
 
 
-# def connect_db():
-#    return sqlite3.connect('posts.db')
 
 @app.route('/about')
 def about():
@@ -69,4 +61,19 @@ def about():
 @app.route('/apply', methods=['GET', 'POST'])
 @login_required
 def apply():
+  if request.method == "POST":
+      apply = Apply(request.form['fname'],   
+      request.form['sname'], 
+      request.form['email'],
+      request.form['nid'], 
+      request.form['ward'], 
+      request.form['location'],
+      request.form['slocation'],
+      request.form['village'], 
+      request.form['college'],
+      request.form['year']    
+      )
+      db.session.add(apply)
+      db.session.commit()
+      flash("your application has been successfuly submited")
   return render_template("apply.html")
