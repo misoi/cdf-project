@@ -1,0 +1,55 @@
+
+
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>County Development Funds</title>
+    <link rel="stylesheet" href="../static/css/foundation.min.css">
+    <link rel="stylesheet" href="../static/css/app.css">
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <script src="../static/js/app.js"></script>
+</head>
+<body class="background form">
+<div class="large-12 columns height"></div>
+<div class="row">
+<div class="large-12 columns">
+<div class="large-3 columns"><br></div>
+<div class="large-6 columns form">
+	<h2>Please Login</h2></legend>
+	{% for message in get_flashed_messages() %} {{ message }} {% endfor %}
+	  <br>
+	  {% from "_formhelpers.html" import render_field %} 
+	  <form class="form-signin" role="form" method="post" action="">
+  {{ form.csrf_token }}
+  <p>
+    {{ form.username(placeholder="username") }}
+    <span class="error">
+      {% if form.username.errors %}
+        {% for error in form.username.errors %}
+          {{ error }}
+        {% endfor %}
+      {% endif %}
+    </span>
+  </p>
+  <p>
+  {{ form.password(placeholder="password") }}
+    <span class="error">
+      {% if form.password.errors %}
+        {% for error in form.password.errors %}
+          {{ error }}
+        {% endfor %}
+      {% endif %}
+    </span>
+  </p>
+  <button class="btn btn-sm btn-success" type="submit">Sign in</button>
+</form>
+	 <p>Don't have an account? <a href="/signup">SignUp</a></p>
+
+	 </div>
+	 <div class="large-3 columns"><br></div>
+</div></div>
+
+</body>
+</html>
