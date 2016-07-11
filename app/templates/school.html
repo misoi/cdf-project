@@ -13,10 +13,8 @@
 </head>
 
 <body class="register">
-    <div class="row ">
-
-        <hr>
-           {% if current_user.is_authenticated %} {% for message in get_flashed_messages() %} {{ message }} {% endfor %}{{ current_user.name }}{% endif %}
+    <div class="row "> <hr>
+           {% if current_user.is_authenticated %} {{ current_user.name }}{% endif %}
                         <div class="large-12 columns">
 
                             <div class="large-2 columns">
@@ -24,50 +22,30 @@
                             </div>
 
                             <div class="large-8 columns form">
-                                   <h4>STEP 1</h4>
-
+                                   <h4>STEP 3</h4>
+{% for message in get_flashed_messages() %} {{ message }} {% endfor %}
                                 <br>
                                 {% from "_formhelpers.html" import render_field %}
                                 <form class="form-apply" role="form" method="post" action="">
                                       {{ form.csrf_token }}
-                                      <p><span class="error">
-                                          {% if form.fname.errors %}
-                                            {% for error in form.fname.errors %}
+<p><span class="error">
+                                          {% if form.college.errors %}
+                                            {% for error in form.college.errors %}
+                                              <span class="errorr"> {{ error }}</span>
+                                            {% endfor %}
+                                          {% endif %}
+                                        </span>
+                                      {{ form.college(placeholder="your current college or high school") }}
+
+                                      </p>
+                                     <p> <span class="error">
+                                          {% if form.year.errors %}
+                                            {% for error in form.year.errors %}
                                              <span class="errorr"> {{ error }}</span>
                                             {% endfor %}
                                           {% endif %}
                                         </span>
-                                        {{ form.fname(placeholder="First name") }}
-
-                                      </p>
-                                      <p><span class="error">
-                                          {% if form.sname.errors %}
-                                            {% for error in form.sname.errors %}
-                                              <span class="errorr"> {{ error }}</span>
-                                            {% endfor %}
-                                          {% endif %}
-                                        </span>
-                                      {{ form.sname(placeholder="Second name") }}
-
-                                      </p>
-                                     <p><span class="error">
-                                          {% if form.email.errors %}
-                                            {% for error in form.email.errors %}
-                                              <span class="errorr"> {{ error }}</span>
-                                            {% endfor %}
-                                          {% endif %}
-                                        </span>
-                                      {{ form.email(placeholder="your valid email") }}
-
-                                      </p>
-                                     <p> <span class="error">
-                                          {% if form.nid.errors %}
-                                            {% for error in form.nid.errors %}
-                                              <span class="errorr"> {{ error }}</span>
-                                            {% endfor %}
-                                          {% endif %}
-                                        </span>
-                                      {{ form.nid(placeholder="National ID number") }}
+                                      {{ form.year(placeholder="Year of study") }}
 
                                       </p>
 

@@ -15,12 +15,8 @@
 <body>
     <div class="large-12 columns ">
         <hr>
-
         <div class="row apply ">
-
             <div class="large-12 columns ">
-
- 
                     <div class="container apply">
                         <div class="large-12 columns overlay">
 
@@ -29,23 +25,58 @@
                             </div>
 
                             <div class="large-6 columns">
+
+                           <!-- ================================================================================================= registration form ==========================================================-->
+
                             <fieldset><legend>
-                                   <h2>Please signup here</h2></legend>
                                 {% for message in get_flashed_messages() %} {{ message }} {% endfor %}
                                 <br>
-                                <form action="/signup" method="POST">
-                                     <label >Full name</label><input type="text" placeholder="Full name" name="name" value="{{ request.form.username }}" required>
-                       
-                                    <br><label>Valid Email</label> <input type="email" placeholder="Valid email" name="email"  required>
-                       
-                                    <br><label >Password</label> <input type="password" placeholder="Password" name="password" required>
-                       
-                                    <br><label>Confirm Password</label><input type="password" placeholder="confirm password" name="confirm"  required>
-                                    <a href="/index">
-                                        <input class="btn btn-default button" type="submit" value="Signup">
-                                    </a>
-
-                                </form>
+                                <h1>Please Register</h1>
+                                            <br>
+                                            <form class="form-signin" role="form" method="post" action="">
+                                              {{ form.csrf_token }}
+                                              <p>
+                                                {{ form.name(placeholder="Names") }}
+                                                <span class="error">
+                                                  {% if form.name.errors %}
+                                                    {% for error in form.name.errors %}
+                                                      {{ error }}
+                                                    {% endfor %}
+                                                  {% endif %}
+                                                </span>
+                                              </p>
+                                              <p>
+                                              {{ form.email(placeholder="valid email") }}
+                                                <span class="error">
+                                                  {% if form.email.errors %}
+                                                    {% for error in form.email.errors %}
+                                                      {{ error }}
+                                                    {% endfor %}
+                                                  {% endif %}
+                                                </span>
+                                              </p>
+                                              <p>
+                                              {{ form.password(placeholder="password") }}
+                                                <span class="error">
+                                                  {% if form.password.errors %}
+                                                    {% for error in form.password.errors %}
+                                                      {{ error }}
+                                                    {% endfor %}
+                                                  {% endif %}
+                                                </span>
+                                              </p>
+                                              <p>
+                                              {{ form.password2(placeholder="confirm password") }}
+                                                <span class="error">
+                                                  {% if form.password2.errors %}
+                                                    {% for error in form.password.errors %}
+                                                      {{ error }}
+                                                    {% endfor %}
+                                                  {% endif %}
+                                                </span>
+                                              </p>
+                                              <button class="btn btn-sm btn-success" type="submit">Register!</button>
+                                            </form>
                                 </fieldset>
                             </div>
                             <div class="large-4 columns">

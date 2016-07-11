@@ -13,10 +13,8 @@
 </head>
 
 <body class="register">
-    <div class="row ">
-
-        <hr>
-           {% if current_user.is_authenticated %} {% for message in get_flashed_messages() %} {{ message }} {% endfor %}{{ current_user.name }}{% endif %}
+    <div class="row "> <hr>
+           {% if current_user.is_authenticated %} {{ current_user.name }}{% endif %}
                         <div class="large-12 columns">
 
                             <div class="large-2 columns">
@@ -24,50 +22,71 @@
                             </div>
 
                             <div class="large-8 columns form">
-                                   <h4>STEP 1</h4>
-
+                                   <h4>STEP 2</h4>
+{% for message in get_flashed_messages() %} {{ message }} {% endfor %}
                                 <br>
                                 {% from "_formhelpers.html" import render_field %}
                                 <form class="form-apply" role="form" method="post" action="">
                                       {{ form.csrf_token }}
-                                      <p><span class="error">
-                                          {% if form.fname.errors %}
-                                            {% for error in form.fname.errors %}
-                                             <span class="errorr"> {{ error }}</span>
-                                            {% endfor %}
-                                          {% endif %}
-                                        </span>
-                                        {{ form.fname(placeholder="First name") }}
-
-                                      </p>
-                                      <p><span class="error">
-                                          {% if form.sname.errors %}
-                                            {% for error in form.sname.errors %}
+                                            <p><span class="error">
+                                          {% if form.county.errors %}
+                                            {% for error in form.county.errors %}
                                               <span class="errorr"> {{ error }}</span>
                                             {% endfor %}
                                           {% endif %}
                                         </span>
-                                      {{ form.sname(placeholder="Second name") }}
+                                      {{ form.county(placeholder="Your home county ") }}
+
+                                      </p>
+                                                <p><span class="error">
+                                          {% if form.constituency.errors %}
+                                            {% for error in form.constituency.errors %}
+                                              <span class="errorr"> {{ error }}</span>
+                                            {% endfor %}
+                                          {% endif %}
+                                        </span>
+                                      {{ form.constituency(placeholder="home constituency ") }}
+
+                                      </p>
+
+                                                    <p><span class="error">
+                                          {% if form.ward.errors %}
+                                            {% for error in form.ward.errors %}
+                                              <span class="errorr"> {{ error }}</span>
+                                            {% endfor %}
+                                          {% endif %}
+                                        </span>
+                                      {{ form.ward(placeholder="home ward ") }}
 
                                       </p>
                                      <p><span class="error">
-                                          {% if form.email.errors %}
-                                            {% for error in form.email.errors %}
+                                          {% if form.location.errors %}
+                                            {% for error in form.location.errors %}
                                               <span class="errorr"> {{ error }}</span>
                                             {% endfor %}
                                           {% endif %}
                                         </span>
-                                      {{ form.email(placeholder="your valid email") }}
+                                      {{ form.location(placeholder="your home location") }}
 
                                       </p>
-                                     <p> <span class="error">
-                                          {% if form.nid.errors %}
-                                            {% for error in form.nid.errors %}
+                                     <p><span class="error">
+                                          {% if form.slocation.errors %}
+                                            {% for error in form.slocation.errors %}
                                               <span class="errorr"> {{ error }}</span>
                                             {% endfor %}
                                           {% endif %}
                                         </span>
-                                      {{ form.nid(placeholder="National ID number") }}
+                                      {{ form.slocation(placeholder="your sub-location") }}
+
+                                      </p>
+                                     <p><span class="error">
+                                          {% if form.village.errors %}
+                                            {% for error in form.village.errors %}
+                                              <span class="errorr"> {{ error }}</span>
+                                            {% endfor %}
+                                          {% endif %}
+                                        </span>
+                                      {{ form.village(placeholder="Your village") }}
 
                                       </p>
 
@@ -86,3 +105,4 @@
 </body>
 
 </html>
+

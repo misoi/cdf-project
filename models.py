@@ -1,106 +1,119 @@
-from app import app, db, bcrypt
-from wtforms import TextField, PasswordField, validators, Form
-from wtforms.validators import DataRequired, Regexp, ValidationError, Email, Length, EqualTo
+from app import app
+from wtforms import PasswordField
+from flask_bcrypt import generate_password_hash
+
+from flask_login import UserMixin
+import peewee
 
 
+from peewee import *
 
 
-
-#should be randomly generated
+# =================config=======================
+# should be randomly generated
 app.secret_key = '9vY%N\\#l\xd1L\xd6r\xac\xec\xf5\xa6\x01W9_QD\\$'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:postgres@localhost/cynthia'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost/cynthia'
+
+DATABASE = peewee.PostgresqlDatabase('cynthia', user="postgres")
 
 
-#creating tables
-class Signup(db.Model):
+# ===============================regitsration tables/shemas=====================
+class User(UserMixin, Model):
+    name = CharField(max_length=200)
+    email = CharField(unique=True, max_length=150)
+    password = CharField(max_length=100)
 
-	__tablename__= 'users'
+    class Meta:
+        database = DATABASE
 
-	id =db.Column(db.Integer, primary_key=True)
-	name = db.Column(db.String,nullable=False)
-	email = db.Column(db.String,nullable=False)
-	password = db.Column(db.String,nullable=False)
-	confirm= db.Column(db.String,nullable=False)
+    @classmethod
+    def create_user(cls,name, email,password):
+        try:
+            cls.create(
+                name=name,
+                email=email,
+                password=generate_password_hash(password)
+            )
 
-
-	def __init__(self, username, email, password, confirm):
-		self.username= username
-		self.email = email
-		self.password= bcrypt.generate_password_hash(password)
-		self.confirm= bcrypt.generate_password_hash(confirm)
-
-
-
-	def __repr__(self):
-		return '<username{}'.format(self.username)
-
-class Apply(db.Model):
-
-    __tablename__= 'applicants'
-
-    fname=db.Column(db.Integer, primary_key=True)
-    sname = db.Column(db.String,nullable=False)
-    email = db.Column(db.String,nullable=False)
-    nid = db.Column(db.String,nullable=False)
-    ward= db.Column(db.String,nullable=False)
-    location=db.Column(db.Integer, primary_key=True)
-    slocation = db.Column(db.String,nullable=False)
-    village = db.Column(db.String,nullable=False)
-    college = db.Column(db.String,nullable=False)
-    year= db.Column(db.String,nullable=False)
+        except IntegrityError:
+            raise ValueError('user already exists')
 
 
-    def __init__(self,fname,sname,email,nid,ward,location,slocation,village,college,year):
-        self.fname= fname
-        self.sname = sname
-        self.email= email
-        self.nid= nid
-        self.ward= ward
-        self.location = location
-        self.slocation = slocation
-        self.village= village
-        self.college= college
-        self.year= year
-        
+class Personal(UserMixin, Model):
+    fname= CharField(max_length=200)
+    sname = CharField(max_length=200)
+    email = CharField(unique=True, max_length=150)
+    nid = IntegerField(primary_key=True, unique=True)
+
+    class Meta:
+        database = DATABASE
+
+    @classmethod
+    def create_user(cls,fname, sname, email,nid):
+        try:
+            cls.create(
+                fname=fname,
+                sname=sname,
+                email=email,
+                nid=nid
+            )
+        except IntegrityError:
+            raise ValueError('Details already exists')
+
+
+class Place(UserMixin, Model):
+    county = CharField(max_length=150)
+    constituency = CharField( max_length=150)
+    ward= CharField(max_length=50)
+    location= CharField(max_length=50)
+    slocation = CharField(max_length=50)
+    village = CharField(max_length=50)
+
+    class Meta:
+        database = DATABASE
+
+    @classmethod
+    def create_user(cls, county, constituency, ward, location, slocation, village):
+        try:
+            cls.create(
+                county=county,
+                constituency=constituency,
+                ward=ward,
+                location=location,
+                slocation=slocation,
+                village=village
+            )
+
+
+        except IntegrityError:
+            raise ValueError('Details already exists')
+
+
+class School(UserMixin, Model):
+    college = CharField(max_length=50)
+    year= CharField()
+
+    class Meta:
+        database = DATABASE
+
+    @classmethod
+    def create_user(cls, college, year):
+        try:
+            cls.create(
+                college=college,
+                year=year
+            )
+
+
+        except IntegrityError:
+            raise ValueError('Details already exists')
+
+
+def initialize():
+    DATABASE.connect()
+    DATABASE.create_tables([User,Personal,Place,School], safe=True)
+    DATABASE.close()
 
 
 
-    def __repr__(self):
-        return '<fname{}'.format(self.fname)
-#forms
-def email_exists(form, field):
-    if user.select().where(user.email == field.data).exists():
-        raise validationError("Email already exist.")
-
-
-class RegistrationForm(Form):
-    username = TextField('Username', [validators.Required("Enter your name"),Regexp(
-                r'^[a-zA-Z0-9_]+$',
-                message=("Name should be letters,numbers and underscore only.")
-                ),
-        ])
-    email = TextField(
-        'Email',
-        validators=[
-            DataRequired(),
-            Email(message=None),
-            email_exists
-            ])
-    password = PasswordField(
-        'Password',
-        validators=(
-            DataRequired(),
-            Length(min=4),))
-    password2 = PasswordField(
-        'Confirm Password',
-        validators=[
-            DataRequired(),
-            EqualTo('password', message="passwords must match")
-        ])
-
-
-if __name__ == '__main__':
-	
-
-	app.run(debug=True)
 

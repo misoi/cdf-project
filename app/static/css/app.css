@@ -56,8 +56,7 @@
     background-color: rgba(0,0,0, 0.6);
     overflow-x: hidden;
     color: white;
-    
-}
+    }
 .sectionone{
     background-color: green;
 }
@@ -73,8 +72,26 @@
     font-size:18px;
 }
 .register{
-    background-color:#EEE8EA;
+    background-color:#B6B6B6;
 }
 .form{
     background-color: white;
 }
+.login{
+    width: 500px;
+    height: 100px;
+    background-color: #B6B6B6;
+    box-shadow: 10px 10px 5px #888888;
+}
+.height{
+    height: 100px;
+}
+.text{
+    font-size: 40px;
+    font-family: 'Oswald', sans-serif;
+}
+.form{
+    background-color: #F2F1F0;
+}
+.errorr{
+color:red}
